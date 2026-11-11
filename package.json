@@ -12,6 +12,9 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.119.0",
     "@tailwindcss/vite": "^4.3.5",
+    "@tiptap/extension-image": "^3.33.1",
+    "@tiptap/react": "^3.33.1",
+    "@tiptap/starter-kit": "^3.33.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "tailwindcss": "^4.3.5"

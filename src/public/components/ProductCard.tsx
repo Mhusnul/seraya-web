@@ -1,4 +1,5 @@
 import { Icon } from './Icon'
+import { useWebsiteSettings, websiteWhatsAppUrl } from '../../shared/websiteSettings'
 
 export type Product = {
   category: string
@@ -15,6 +16,8 @@ type ProductCardProps = {
 }
 
 export function ProductCard({ product, index }: ProductCardProps) {
+  const settings = useWebsiteSettings()
+  const whatsappUrl = websiteWhatsAppUrl(settings, `Tanya produk ${product.name}`)
   return (
     <article
       className={`group flex flex-col justify-between rounded-xl border border-slate-200 border-t-4 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg ${product.accent}`}
@@ -40,14 +43,14 @@ export function ProductCard({ product, index }: ProductCardProps) {
           ))}
         </div>
       </div>
-      <a
-        href={`https://wa.me/628111611177?text=Tanya%20produk%20${encodeURIComponent(product.name)}`}
-        target="_blank"
-        rel="noreferrer"
-        className="mt-6 flex items-center gap-2 border-t border-slate-100 pt-4 font-mono text-xs font-bold uppercase tracking-wide text-sky-600 transition hover:text-[#e65100]"
-      >
-        Detail <Icon name="arrow_forward" className="text-base" />
-      </a>
+      {whatsappUrl && <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-6 flex items-center gap-2 border-t border-slate-100 pt-4 font-mono text-xs font-bold uppercase tracking-wide text-sky-600 transition hover:text-[#e65100]"
+        >
+          Detail <Icon name="arrow_forward" className="text-base" />
+        </a>}
     </article>
   )
 }
